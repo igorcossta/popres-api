@@ -1,6 +1,6 @@
 package br.com.igorcossta.api.exception;
 
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,7 +31,7 @@ public class JavaAPIExceptionHandler extends ResponseEntityExceptionHandler {
 
 		var title = "Campos inválidos. Por favor verique e tente novamente.";
 		var fields = returnErrors(ex);
-		var response = new ApiResponseError(status.value(), OffsetDateTime.now(), title, fields);
+		var response = new ApiResponseError(status.value(), LocalDateTime.now(), title, fields);
 
 		return super.handleExceptionInternal(ex, response, headers, status, request);
 	}
@@ -53,7 +53,7 @@ public class JavaAPIExceptionHandler extends ResponseEntityExceptionHandler {
 		var status = HttpStatus.NOT_FOUND;
 		var title = ex.getMessage();
 
-		var res = new ApiResponseError(status.value(), OffsetDateTime.now(), title, null);
+		var res = new ApiResponseError(status.value(), LocalDateTime.now(), title, null);
 		return handleExceptionInternal(ex, res, new HttpHeaders(), status, request);
 	}
 

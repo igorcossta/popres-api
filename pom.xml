@@ -8,11 +8,11 @@
 		<version>2.4.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.web.service</groupId>
+	<groupId>br.com.igorcossta</groupId>
 	<artifactId>rest-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>rest-api</name>
-	<description>Demo project for Spring Boot</description>
+	<name>popres-api</name>
+	<description>Simple Spring REST API</description>
 
 	<properties>
 		<java.version>11</java.version>

@@ -1,9 +1,10 @@
 package br.com.igorcossta.api.dto.response;
 
 import java.io.Serializable;
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
@@ -12,7 +13,9 @@ public class ApiResponseError implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int code;
-	private OffsetDateTime time;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", locale = "en-US")
+	private LocalDateTime time;
 	private String title;
 
 	private List<Campo> campos;
@@ -20,7 +23,7 @@ public class ApiResponseError implements Serializable {
 	public ApiResponseError() {
 	}
 
-	public ApiResponseError(int code, OffsetDateTime time, String title, List<Campo> campos) {
+	public ApiResponseError(int code, LocalDateTime time, String title, List<Campo> campos) {
 		super();
 		this.code = code;
 		this.time = time;
@@ -36,11 +39,11 @@ public class ApiResponseError implements Serializable {
 		this.code = code;
 	}
 
-	public OffsetDateTime getTime() {
+	public LocalDateTime getTime() {
 		return time;
 	}
 
-	public void setTime(OffsetDateTime time) {
+	public void setTime(LocalDateTime time) {
 		this.time = time;
 	}
 
