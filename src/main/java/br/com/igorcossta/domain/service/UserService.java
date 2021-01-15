@@ -20,10 +20,17 @@ public class UserService {
 	}
 
 	public User findById(long id) {
-		return repository.findById(id).orElseThrow(() -> new UserNotFound(String.format("User not found. ID %s", id)));
+		return repository.findById(id)
+				.orElseThrow(() -> new UserNotFound(String.format("User not found. ID %s", id)));
 	}
 
 	public User insert(User user) {
 		return repository.save(user);
+	}
+
+	public void delete(Long id) {
+		User user = repository.findById(id)
+				.orElseThrow(() -> new UserNotFound(String.format("User not found. ID %s", id)));
+		repository.delete(user);
 	}
 }

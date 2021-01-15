@@ -6,6 +6,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
@@ -18,15 +19,20 @@ public class UserDto implements Serializable {
 	@JsonProperty(access = Access.READ_ONLY)
 	private Long id;
 
-	@NotBlank(message = "{nome.not.blank}")
+	@NotBlank
+	@Size(min = 3, max = 255)
 	private String nome;
-	@NotBlank(message = "{email.not.blank}")
-	@Email(message = "{email.not.valid}")
+
+	@NotBlank
+	@Size(max = 80)
+	@Email
 	private String email;
 
-	@Min(value = 18, message = "{idade.min}")
+	@NotNull
+	@Min(value = 18)
 	private int idade;
-	@NotNull(message = "{avatar.not.null}")
+
+	@NotNull // (message = "{avatar.not.null}")
 	private String avatar;
 
 	public UserDto() {
